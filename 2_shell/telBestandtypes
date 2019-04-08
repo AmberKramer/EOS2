@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+DIRNAME=$1
+COUNTER=0
+
+for i in "$@"; do
+  COUNTER=$[COUNTER+1]
+  if (($COUNTER != 1)); then
+    AMOUNT=0
+	for file in $DIRNAME/*
+	do
+	case $file in
+	*."$i")
+		AMOUNT=$[AMOUNT+1];;
+	esac
+	done
+echo ""$i" count: " $AMOUNT
+fi
+done
+
